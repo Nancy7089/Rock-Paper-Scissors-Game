@@ -37,10 +37,27 @@
       font-size: 22px;
       font-weight: bold;
     }
+
+    #scoreboard {
+      margin-top: 20px;
+      font-size: 18px;
+      color: darkslategray;
+    }
+
+    #reset {
+      margin-top: 20px;
+      padding: 6px 12px;
+      font-size: 16px;
+      border: none;
+      background-color: darkred;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <h1>Rock Paper Scissors ✊✋✌️</h1>
+  <h1>Rock Paper Scissors</h1>
 
   <div class="buttons">
     <button onclick="playGame('rock')">Rock</button>
@@ -49,8 +66,13 @@
   </div>
 
   <div id="result"></div>
+  <div id="scoreboard"></div>
+  <button id="reset" onclick="resetScore()">Reset Score</button>
 
   <script>
+    let playerScore = parseInt(localStorage.getItem("playerScore")) || 0;
+    let computerScore = parseInt(localStorage.getItem("computerScore")) || 0;
+
     function playGame(playerChoice) {
       const choices = ["rock", "paper", "scissors"];
       const computerChoice = choices[Math.floor(Math.random() * 3)];
@@ -65,12 +87,32 @@
         (playerChoice === "scissors" && computerChoice === "paper")
       ) {
         result = `You win! ${playerChoice} beats ${computerChoice}`;
+        playerScore++;
       } else {
         result = `You lose! ${computerChoice} beats ${playerChoice}`;
+        computerScore++;
       }
+      localStorage.setItem("playerScore", playerScore);
+      localStorage.setItem("computerScore", computerScore);
 
       document.getElementById("result").innerText = result;
+      updateScore();
     }
+
+    function updateScore() {
+      document.getElementById("scoreboard").innerText = 
+        `Your Score: ${playerScore} | Computer Score: ${computerScore}`;
+    }
+
+    function resetScore() {
+      playerScore = 0;
+      computerScore = 0;
+      localStorage.setItem("playerScore", playerScore);
+      localStorage.setItem("computerScore", computerScore);
+      updateScore();
+      document.getElementById("result").innerText = "";
+    }
+    updateScore();
   </script>
 </body>
 </html>
