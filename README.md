@@ -9,7 +9,7 @@ This is a simple browser-based Rock Paper Scissors game built using HTML, CSS, a
 3. Responsive layout for small screens  
 4. Clean and modern CSS styling  
 5. Real-time result display without page reload
-6. 6.Score tracing using locaStorage
+6. Score tracing using locaStorage
 
 ## How to Play
 
