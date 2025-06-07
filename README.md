@@ -8,7 +8,8 @@ This is a simple browser-based Rock Paper Scissors game built using HTML, CSS, a
 2. Interactive user interface using buttons  
 3. Responsive layout for small screens  
 4. Clean and modern CSS styling  
-5. Real-time result display without page reload  
+5. Real-time result display without page reload
+6. Result and scores are displayed live without reloading page
 
 ## How to Play
 
